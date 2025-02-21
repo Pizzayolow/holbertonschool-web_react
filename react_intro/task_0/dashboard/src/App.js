@@ -1,21 +1,19 @@
-import logo from './logo.jpg';
-import favicon from './favicon.ico';
+import logo from '../src/Holberton Logo.jpg';
 import './App.css';
 
 function App() {
   return (
-    <div className="MainContainer">
     <div className="App">
-      <link rel="icon" href={favicon} />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="Holberton Logo" />
         <h1>School dashboard</h1>
       </header>
-      <body className="App-body">
-        <p>Login to access the full dashboard</p>
-      </body>
-    </div>
-    <footer className="App-footer">Copyright 2020 - holberton School</footer>
+      <div className="App-body">
+        <p>Login to access to the full dashboard</p>
+      </div>
+      <footer className="App-footer">
+        <p>Copyright 2024 - holberton School</p>
+      </footer>
     </div>
   );
 }
