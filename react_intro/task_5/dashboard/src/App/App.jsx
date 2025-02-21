@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "./assets/holberton_logo.jpg";
-import "./App.css";
-import { getCurrentYear, getFooterCopy } from "../utils";
-import Notifications from "./Notifications/Notifications"; // Import Notifications component
+import logo from "../assets/holberton_logo.jpg"; // ✅ Updated path
+import "./App.css"; // ✅ App-specific styles
+import { getCurrentYear, getFooterCopy } from "../utils/utils"; // ✅ Updated path
+import Notifications from "../Notifications/Notifications"; // ✅ Updated path
 
 function App() {
   return (

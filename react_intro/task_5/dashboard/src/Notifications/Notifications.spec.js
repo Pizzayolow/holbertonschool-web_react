@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import Notifications from "./Notifications";
+import Notifications from "./Notifications"; // ✅ Path updated
 
 describe("Notifications Component", () => {
   test("renders notifications title", () => {

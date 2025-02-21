@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import App from "./App/App";
+import App from "./App"; // ✅ Path updated
 
 describe("App Component", () => {
   test("renders h1 element with text 'School Dashboard'", () => {

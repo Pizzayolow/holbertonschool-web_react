@@ -1,6 +1,7 @@
 import React from "react";
-import closeIcon from "./assets/close-icon.png"; // Ensure the correct path
-import { getLatestNotification } from "../../utils";
+import closeIcon from "../assets/close-icon.png"; // ✅ Updated path
+import { getLatestNotification } from "../utils/utils"; // ✅ Updated path
+import "./Notifications.css"; // ✅ Notifications-specific styles
 
 function Notifications() {
   return (
