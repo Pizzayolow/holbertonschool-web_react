@@ -1,30 +1,34 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  mode: 'development',
-  devtool: 'inline-source-map',
-  entry: './src/index.js',
+  mode: "development",
+  devtool: "inline-source-map",
+  entry: "./src/index.js",
   output: {
-    path: path.resolve('./dist'),
-    filename: 'bundle.js',
+    filename: "bundle.js",
+    path: path.resolve(__dirname, 'dist')
   },
   devServer: {
-    historyApiFallback: true, // to can use @reach/router without errors
     hot: true,
+    contentBase: path.resolve("./dist"),
     compress: true,
-    static: path.resolve('./dist'),
+    port: 8564,
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
+        }
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
@@ -33,18 +37,12 @@ module.exports = {
           {
             loader: "image-webpack-loader",
             options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true, // webpack@2.x and newer
+              bypassOnDebug: true,
+              disable: true,
             },
           },
         ],
       },
-    ]
+    ],
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: path.resolve('./dist/index.html'),
-      filename: 'index.html'
-    })
-  ]
 };
