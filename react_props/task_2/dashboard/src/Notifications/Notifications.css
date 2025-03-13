@@ -1,26 +1,34 @@
-:root {
-	--main-color: #e01d3f;
-}
-
 .Notifications {
-	border: 3px dashed var(--main-color);
-	padding: 10px;
-	margin-bottom: 20px;
+  border: 3px dashed #E1003C;
+  padding: 20px;
 }
 
-.Notifications button img {
-	width: 10px;
+.Notifications ul li[data-notification-type="default"] {
+  color: blue;
 }
 
-.Notifications p {
-	margin: 0;
-	margin-top: 15px;
+.Notifications ul li[data-notification-type="urgent"] {
+  color: red;
 }
 
-[data-notification-type="default"] {
-	color: blue;
+strong{
+  font-weight: 900;
 }
 
-[data-notification-type="urgent"] {
-	color: red;
+.close-button{
+  float: right;
+
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+}
+
+.close-button:hover{
+  opacity: 0.7;
+}
+
+.close-button img{
+  width: 100%;
 }

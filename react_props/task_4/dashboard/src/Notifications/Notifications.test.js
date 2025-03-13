@@ -1,20 +1,25 @@
-import { shallow } from "enzyme";
-import React from "react";
-import Notifications from "./Notifications";
+import React from 'react';
+import { shallow } from 'enzyme';
+import Notifications from './Notifications';
 
-describe("<Notifications />", () => {
-	it("Notifications renders without crashing", () => {
-		const wrapper = shallow(<Notifications />);
-		expect(wrapper.exists()).toEqual(true);
-	});
+describe('Notifications Component', () => {
+  it('displays the menu item when displayDrawer is false', () => {
+    const wrapper = shallow(<Notifications />);
+    expect(wrapper.find('.Notification_components').exists()).toBeTruthy();
+  });
 
-	it("Verify that the first NotificationItem element renders the right html", () => {
-		const wrapper = shallow(<Notifications />);
-		wrapper.update();
-		const listItems = wrapper.find("NotificationItem");
-		expect(listItems).toBeDefined();
-		expect(listItems.first().html()).toEqual(
-			'<li data-notification-type="default">New course available</li>'
-		);
-	})
+  it('does not display div.Notifications when displayDrawer is false', () => {
+    const wrapper = shallow(<Notifications />);
+    expect(wrapper.find('.Notifications').exists()).toBeFalsy();
+  });
+
+  it('displays the menu item when displayDrawer is true', () => {
+    const wrapper = shallow(<Notifications displayDrawer={true} />);
+    expect(wrapper.find('.Notification_components').exists()).toBeTruthy();
+  });
+
+  it('displays div.Notifications when displayDrawer is true', () => {
+    const wrapper = shallow(<Notifications displayDrawer={true} />);
+    expect(wrapper.find('.Notifications').exists()).toBeTruthy();
+  });
 });

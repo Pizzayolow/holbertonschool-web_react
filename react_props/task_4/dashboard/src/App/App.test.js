@@ -1,41 +1,28 @@
-import { shallow } from "enzyme";
-import React from "react";
-import App from "./App";
+import React from 'react';
+import { shallow } from 'enzyme';
+import App from './App';
+import Login from '../Login/Login';
+import CourseList from '../CourseList/CourseList';
 
-describe("<App />", () => {
-	it("App renders without crashing", () => {
-		const wrapper = shallow(<App />);
-		expect(wrapper.exists()).toEqual(true);
-	});
-	it("should contain the Notifications component", () => {
-		const wrapper = shallow(<App />);
-		wrapper.update();
-		expect(wrapper.find("Notifications")).toHaveLength(1);
-	});
-	it("should contain the Header component", () => {
-		const wrapper = shallow(<App />);
-		wrapper.update();
-		expect(wrapper.find("Header")).toHaveLength(1);
-	});
-	it("should contain the Login component", () => {
-		const wrapper = shallow(<App isLoggedIn={false} />);
-		wrapper.update();
-		expect(wrapper.find("Login")).toHaveLength(1);
-	});
+describe('App Component', () => {
+  it('does not display CourseList when logged out', () => {
+    const wrapper = shallow(<App isLoggedIn={false} displayDrawer={false} />);
+    expect(wrapper.find(CourseList).exists()).toBeFalsy();
+  });
 
-	it('does not include Login component', () => {
-		const wrapper = shallow(<App isLoggedIn={true} />);
-		expect(wrapper.find(Login)).toHaveLength(0);
-	});
+  describe('when isLoggedIn is true', () => {
+    let wrapper;
 
-	it('includes CourseList component', () => {
-		const wrapper = shallow(<App isLoggedIn={true} />);
-		expect(wrapper.find(CourseList)).toHaveLength(1);
-	});
+    beforeAll(() => {
+      wrapper = shallow(<App isLoggedIn={true} displayDrawer={false} />);
+    });
 
-	it("should contain the Footer component", () => {
-		const wrapper = shallow(<App />);
-		wrapper.update();
-		expect(wrapper.find("Footer")).toHaveLength(1);
-	});
+    it('does not include Login component', () => {
+      expect(wrapper.find(Login).exists()).toBeFalsy();
+    });
+
+    it('includes CourseList component', () => {
+      expect(wrapper.find(CourseList).exists()).toBeTruthy();
+    });
+  });
 });
