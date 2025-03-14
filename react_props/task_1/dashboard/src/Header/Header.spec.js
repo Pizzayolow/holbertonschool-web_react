@@ -1,18 +1,14 @@
-// Header.spec.js
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import Header from '../Header/Header';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import Header from "./Header";
 
-describe('Header component', () => {
-  test('renders the Holberton logo', () => {
-    render(<Header />);
-    const logo = screen.getByAltText(/holberton logo/i);
-    expect(logo).toBeInTheDocument();
-  });
+test("renders Header component correctly", () => {
+  render(<Header />);
 
-  test('renders the heading h1 element with correct text', () => {
-    render(<Header />);
-    const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading).toHaveTextContent('School dashboard');
-  });
+  // Check if logo is present
+  const logo = screen.getByAltText("Holberton Logo");
+  expect(logo).toBeInTheDocument();
+
+  // Check if title is present
+  expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("School Dashboard");
 });
