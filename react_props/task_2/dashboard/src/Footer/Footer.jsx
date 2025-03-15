@@ -1,18 +1,16 @@
-import './Footer.css'
-import { getCurrentYear, getFooterCopy } from "../utils/utils.js";
-
-
-const currentYear = getCurrentYear();
-const footerCopy = getFooterCopy(true);
+import { getCurrentYear, getFooterCopy } from "../utils/utils";
+import "./Footer.css";
 
 function Footer() {
-    return (
-        <>
-            <div className="App-footer">
-                <p>Copyright {currentYear} - {footerCopy}</p>
-            </div>
-        </>
-    );
+  return (
+    <>
+      <div className="App-footer">
+        <p>
+          Copyright {getCurrentYear()} - {getFooterCopy()}
+        </p>
+      </div>
+    </>
+  );
 }
 
 export default Footer;

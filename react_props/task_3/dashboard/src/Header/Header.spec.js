@@ -1,19 +1,23 @@
-import Header from './Header'
-import { render, screen } from '@testing-library/react'
-
+import { render, screen } from "@testing-library/react";
+import Header from "./Header";
 
 describe("Header", () => {
-    it("check if the h1 element with the text School dashboard", () => {
-        render(<Header />);
+  it("Should render the logo image", async () => {
+    render(<Header />);
 
-        const title = screen.getByRole("heading", { level: 1, name: /School Dashboard/i });
-        expect(title).toBeInTheDocument();
+    const image = screen.getByAltText(/holberton logo/i);
+
+    expect(image).toBeInTheDocument();
+  });
+
+  it("Render h1 with good text", async () => {
+    render(<Header />);
+
+    const titleH1 = screen.getByRole("heading", {
+      level: 1,
+      name: /School Dashboard/i,
     });
 
-    it("check if an img element is rendered", () => {
-        render(<Header />);
-
-        const image = screen.getByAltText(/holberton logo/i);
-        expect(image).toBeInTheDocument();
-    });
+    expect(titleH1).toBeInTheDocument();
+  });
 });

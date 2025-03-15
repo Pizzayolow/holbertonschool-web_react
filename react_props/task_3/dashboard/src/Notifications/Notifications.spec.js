@@ -1,12 +1,11 @@
-import {render, screen} from '@testing-library/react'
-import Notifications from './Notifications'
+import { render, screen } from "@testing-library/react";
+import Notifications from "./Notifications";
 
+describe("App", () => {
+  it("should render 3 li elements", async () => {
+    render(<Notifications />);
 
-describe("Notifications", () => {
-    it("Verify that there are 3 li elements", () => {
-        render(<Notifications />);
-
-        const items = screen.getAllByRole("listitem")
-        expect(items).toHaveLength(3)
-    });
+    const listItems = screen.getAllByRole("listitem");
+    expect(listItems).toHaveLength(3);
+  });
 });

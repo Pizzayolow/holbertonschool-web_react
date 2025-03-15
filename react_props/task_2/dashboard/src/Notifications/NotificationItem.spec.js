@@ -1,11 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import NotificationItem from './NotificationItem';
+import { render, screen } from "@testing-library/react";
+import NotificationItem from "./NotificationItem";
 
-describe('NotificationItem', () => {
-  it('should have blue color and data-notification-type set to "default" when type is "default"', () => {
-    render(<NotificationItem type="default" value="New course available" />);
+describe("NotificationItem", () => {
+  it("should render blue color data-notification-type set to default when type is default", async () => {
+    render(<NotificationItem type="default" value="Test notification" />);
 
-    const liElement = screen.getByText("New course available");
+    const liElement = screen.getByText("Test notification");
 
     expect(liElement).toBeInTheDocument();
     expect(liElement.tagName).toBe("LI");
@@ -15,10 +15,10 @@ describe('NotificationItem', () => {
     expect(style.color).toBe("blue");
   });
 
-  it('should have red color and data-notification-type set to "urgent" when type is "urgent"', () => {
-    render(<NotificationItem type="urgent" value="New resume available" />);
+  it("should render red color data-notification-type set to urgent when type is urgent", async () => {
+    render(<NotificationItem type="urgent" value="Test notification" />);
 
-    const liElement = screen.getByText("New resume available");
+    const liElement = screen.getByText("Test notification");
 
     expect(liElement).toBeInTheDocument();
     expect(liElement.tagName).toBe("LI");
