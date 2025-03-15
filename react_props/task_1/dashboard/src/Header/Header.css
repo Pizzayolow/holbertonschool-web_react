@@ -1,13 +1,6 @@
 .App-header {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: start;
-	font-size: calc(10px + 2vmin);
-	border-bottom: solid 5px rgb(223, 14, 14);
-}
-
-.App-header p {
-	color: rgb(223, 14, 14);
-	font-weight: bold;
+    display: flex;
+    border-bottom: solid #e1003c;
+    color: #e1003c;
+    line-height: 330px;
 }
