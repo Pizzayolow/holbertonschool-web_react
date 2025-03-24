@@ -1,3 +1,4 @@
+StyleSheetTestUtils.suppressStyleInjection
 import { getCurrentYear, getFooterCopy, getLatestNotification } from "./utils";
 
 describe("functions", () => {
