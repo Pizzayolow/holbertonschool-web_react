@@ -1,4 +1,3 @@
-StyleSheetTestUtils.suppressStyleInjection
 import { render, screen } from "@testing-library/react";
 import BodySectionWithMarginBottom from "./BodySectionWithMarginBottom";
 
