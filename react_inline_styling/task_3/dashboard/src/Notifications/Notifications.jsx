@@ -68,14 +68,18 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   notifications: {
-    border: "2px dashed #e0354b",
-    padding: "1rem",
-    position: "absolute",
-    right: "1rem",
-    top: "2rem",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100vw",
+    height: "100vh",
     backgroundColor: "white",
-    zIndex: 1,
-    width: "30%",
+    padding: "2rem",
+    fontSize: "20px",
+    zIndex: 999,
+    overflowY: "auto",
+    boxSizing: "border-box",
+    border: "none",
   },
   closeButton: {
     position: "absolute",
@@ -90,7 +94,8 @@ const styles = StyleSheet.create({
     height: "10px",
   },
   list: {
-    paddingLeft: "1rem",
+    padding: 0,
+    listStyleType: "none",
   },
 });
 

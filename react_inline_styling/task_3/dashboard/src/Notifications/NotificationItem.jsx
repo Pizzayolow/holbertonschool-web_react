@@ -5,18 +5,21 @@ import { StyleSheet, css } from "aphrodite";
 class NotificationItem extends React.PureComponent {
   render() {
     const { type, html, value, markAsRead } = this.props;
-    const style = type === "urgent" ? styles.urgent : styles.default;
+    const style =
+      type === "urgent"
+        ? [styles.base, styles.urgent]
+        : [styles.base, styles.default];
 
     return html ? (
       <li
-        className={css(style)}
+        className={css(...style)}
         data-notification-type={type}
         dangerouslySetInnerHTML={html}
         onClick={() => markAsRead()}
       />
     ) : (
       <li
-        className={css(style)}
+        className={css(...style)}
         data-notification-type={type}
         onClick={() => markAsRead()}
       >
@@ -27,6 +30,13 @@ class NotificationItem extends React.PureComponent {
 }
 
 const styles = StyleSheet.create({
+  base: {
+    width: "100%",
+    padding: "10px 8px",
+    fontSize: "20px",
+    borderBottom: "1px solid black",
+    boxSizing: "border-box",
+  },
   default: {
     color: "blue",
   },
