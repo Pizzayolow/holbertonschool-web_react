@@ -31,10 +31,8 @@ const coursesList = [
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      isLoggedIn: props.isLoggedIn || false,
-      displayDrawer: false,
-     };
+    this.state = { displayDrawer: false };
+    // this.state = { isLoggedIn: props.isLoggedIn || false };
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
@@ -48,15 +46,6 @@ class App extends React.Component {
     document.removeEventListener("keydown", this.handleKeyPress);
   }
 
-  handleDisplayDrawer() {
-    console.log("Click")
-    this.setState({ displayDrawer: true });
-  }
-  
-  handleHideDrawer() {
-    this.setState({ displayDrawer: false });
-  }
-
   handleKeyPress(event) {
     if (event.ctrlKey && event.key === "h") {
       alert("Logging you out");
@@ -64,14 +53,24 @@ class App extends React.Component {
     }
   }
 
+  handleDisplayDrawer() {
+    this.setState({ displayDrawer: true });
+  }
+
+  handleHideDrawer() {
+    this.setState({ displayDrawer: false });
+  }
+
   render() {
     return (
       <>
         <div className="root-notifications">
-          <Notifications notificationsList={notificationsList}
-            displayDrawer={this.state.displayDrawer}
+          <Notifications
+            notificationsList={notificationsList}
             handleDisplayDrawer={this.handleDisplayDrawer}
-            handleHideDrawer={this.handleHideDrawer} />
+            handleHideDrawer={this.handleHideDrawer}
+            displayDrawer={this.state.displayDrawer}
+          />
         </div>
         <Header />
         <div className={css(styles.body)}>

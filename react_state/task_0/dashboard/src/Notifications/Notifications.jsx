@@ -12,7 +12,9 @@ class Notifications extends React.Component {
 
   shouldComponentUpdate(nextProps) {
     if (
-      nextProps.notificationsList.length !== this.props.notificationsList.length
+      nextProps.notificationsList.length !==
+        this.props.notificationsList.length ||
+      nextProps.displayDrawer !== this.props.displayDrawer
     )
       return true;
 
@@ -26,34 +28,49 @@ class Notifications extends React.Component {
   render() {
     const {
       notificationsList,
-      displayDrawer,
       handleDisplayDrawer,
       handleHideDrawer,
+      displayDrawer,
     } = this.props;
-  
+    // const { displayDrawer } = this.state;
     return (
       <>
-        {/* Le menu cliquable */}
-        {!displayDrawer && (
-          <div
-            className={css(styles.notificationsTitle)}
-            onClick={handleDisplayDrawer}
-          >
-            Your notifications
-          </div>
-        )}
-  
-        {/* Le drawer complet */}
-        {displayDrawer && (
+        <div
+          className={css(styles.notificationsTitle)}
+          onClick={() => handleDisplayDrawer()}
+        >
+          Your notifications
+        </div>
+        {displayDrawer ? (
           <div className={css(styles.notifications, styles.small)}>
             {notificationsList.length === 0 ? (
-              <p>No new notification for now</p>
+              <>
+                <p>No new notification for now</p>
+                <button
+                  aria-label="Close"
+                  onClick={() => handleHideDrawer()}
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    right: "10px",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  <img
+                    src={closeImage}
+                    alt="Close icon"
+                    style={{ width: "10px", height: "10px" }}
+                  />
+                </button>
+              </>
             ) : (
               <>
                 <p>Here is the list of notifications</p>
                 <button
                   aria-label="Close"
-                  onClick={handleHideDrawer}
+                  onClick={() => handleHideDrawer()}
                   style={{
                     position: "absolute",
                     top: "10px",
@@ -83,6 +100,8 @@ class Notifications extends React.Component {
               </>
             )}
           </div>
+        ) : (
+          ""
         )}
       </>
     );
@@ -98,9 +117,7 @@ Notifications.propTypes = {
 
 Notifications.defaultProps = {
   notificationsList: [],
-  displayDrawer: false,
-  handleDisplayDrawer: () => {},
-  handleHideDrawer: () => {},
+  displayDrawer: true,
 };
 
 export default Notifications;

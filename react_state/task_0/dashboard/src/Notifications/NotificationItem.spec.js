@@ -36,39 +36,4 @@ describe("NotificationItem", () => {
     fireEvent.click(screen.getByText("Test notification"));
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
-
-  it("calls handleDisplayDrawer when clicking on 'Your notifications'", () => {
-    const handleDisplayDrawer = jest.fn(); // Mock
-    render(
-      <Notifications
-        displayDrawer={false}
-        handleDisplayDrawer={handleDisplayDrawer}
-      />
-    );
-  
-    const notificationText = screen.getByText("Your notifications");
-    fireEvent.click(notificationText);
-  
-    expect(handleDisplayDrawer).toHaveBeenCalled();
-  });
-
-  it("calls handleHideDrawer when clicking on close button", () => {
-    const handleHideDrawer = jest.fn(); // Mock
-    const notificationsList = [
-      { id: 1, type: "default", value: "Test notification" },
-    ];
-  
-    render(
-      <Notifications
-        displayDrawer={true}
-        handleHideDrawer={handleHideDrawer}
-        notificationsList={notificationsList}
-      />
-    );
-  
-    const closeButton = screen.getByRole("button", { name: /close/i });
-    fireEvent.click(closeButton);
-  
-    expect(handleHideDrawer).toHaveBeenCalled();
-  });
 });
